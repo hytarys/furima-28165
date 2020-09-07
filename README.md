@@ -35,12 +35,16 @@ Things you may want to cover:
 | nickname              | string   | null: false |
 | password              | string   | null: false |
 | password-confirmation | string   | null: false |
+| birth-year            | integer  | null: false |
+| birth-month           | integer  | null: false |
+| birth-day             | integer  | null: false |
 
 ### Association
 
 - has_many :items
 - has_many :comments
 - has_many :payments
+- has_one :address
 
 ## items テーブル
 
@@ -55,6 +59,7 @@ Things you may want to cover:
 
 - has_many :comments
 - belongs_to :user
+- has_one :item
 
 ## comments テーブル
 
@@ -68,15 +73,30 @@ Things you may want to cover:
 - belongs_to :user
 - belongs_to :item
 
-## payments テーブル
+## address テーブル
 
-| Column      | Type    | Options     |
-| card-number | integer | null: false |
-| cvc         | integer | null: false |
-| holder-name | string  | null: false |
+| Column        | Type       | Options                        |
+| postcode      | integer    | null: false                    |
+| city          | string     | null: false                    |
+| house         | number     | null: false                    |
+| building-name | string     |                                |
+| phone-number  | integer    | null: false                    |
+| user_id       | references | null: false, foreign_key: true |
 
-### Association 
+### Association
 
-belongs_to :user
+- belongs_to :user
+
+## purchases テーブル
+
+| Column  | Type       | Options                        |
+| user_id | references | null: false, foreign_key: true |
+| item_id | references | null: false, foreign_key: true |
+
+### Association テーブル
+
+- has_many :users
+- belong_to :item
+
 
 
