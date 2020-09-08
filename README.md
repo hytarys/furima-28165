@@ -56,10 +56,6 @@ Things you may want to cover:
 - has_one :purchase
 
 
-### Association
-
-- belongs_to :user
-- belongs_to :item
 
 ## address テーブル
 
