@@ -27,29 +27,25 @@ Things you may want to cover:
 ## users テーブル
 
 | Column                | Type     | Options     |
-| first-name            | string   | null: false |
-| last-name             | string   | null: false |
-| first-name-reading    | string   | null: false |
-| last-name-reading     | string   | null: false |
+| first_name            | string   | null: false |
+| last_name             | string   | null: false |
+| first_name_reading    | string   | null: false |
+| last_name_reading     | string   | null: false |
 | email                 | string   | null: false |
 | nickname              | string   | null: false |
-| password              | string   | null: false |
-| password-confirmation | string   | null: false |
-| birth-year            | integer  | null: false |
-| birth-month           | integer  | null: false |
-| birth-day             | integer  | null: false |
+| encrypted_password    | string   | null: false |
+| birthday              | date     | null: false |
+
 
 ### Association
 
 - has_many :items
 - has_many :comments
-- has_many :payments
-- has_one :address
+- has_many :purchases
 
 ## items テーブル
 
 | Column      | Type       | Options                        |
-| image       | string     | null: false                    |
 | name        | string     | null: false                    |
 | explanation | text       | null: false                    |
 | price       | integer    | null: false                    |
@@ -59,7 +55,7 @@ Things you may want to cover:
 
 - has_many :comments
 - belongs_to :user
-- has_one :item
+- has_one :purchase
 
 ## comments テーブル
 
@@ -77,26 +73,28 @@ Things you may want to cover:
 
 | Column        | Type       | Options                        |
 | postcode      | integer    | null: false                    |
+| prefecture_id | string     | null: false                    |
 | city          | string     | null: false                    |
-| house         | number     | null: false                    |
-| building-name | string     |                                |
-| phone-number  | integer    | null: false                    |
-| user_id       | references | null: false, foreign_key: true |
+| house_number  | string     | null: false                    |
+| building_name | string     |                                |
+| phone_number  | string     | null: false                    |
+| purchase      | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :user
+- belongs_to :purchase
 
 ## purchases テーブル
 
 | Column  | Type       | Options                        |
-| user_id | references | null: false, foreign_key: true |
-| item_id | references | null: false, foreign_key: true |
+| user    | references | null: false, foreign_key: true |
+| item    | references | null: false, foreign_key: true |
 
-### Association テーブル
+### Association
 
-- has_many :users
-- belong_to :item
+- belongs_to :user
+- belongs_to :item
+- has_one :address
 
 
 
