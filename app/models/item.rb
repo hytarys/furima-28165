@@ -11,6 +11,6 @@ class Item < ApplicationRecord
   validates :delivery_fee_id, presence: true, inclusion: { in: %w(1), message: 'Select'}
   validates :shipping_origin_id, presence: true, inclusion: { in: %w(1), message: 'Select'}
   validates :shipping_span_id, presence: true, inclusion: { in: %w(1), message: 'Select'}
-  validates :price, presence: true, length: { maximum: 7},:numericality => { :greater_than => 300}, format: { with: /\A[0-9]+\Z/, message: 'Half-width number'}
+  validates :price, presence: true, :numericality => { :greater_than => 299, :less_than => 10000000}, format: { with: /\A[0-9]+\Z/, message: 'Half-width number'}
   validates :image, presence: true
 end
