@@ -3,14 +3,17 @@ class Item < ApplicationRecord
   has_one_attached :image
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :category
-
-  validates :name, presence: true, length: { maximum: 40}
-  validates :explanation, presence: true, length: { maximum: 1000}
-  validates :category_id, presence: true, numericality: { :greater_than => 1, message:'Select'}
-  validates :status_id, presence: true, numericality: { :greater_than => 1, message:'Select'}
-  validates :delivery_fee_id, presence: true, numericality: { :greater_than => 1, message:'Select'}
-  validates :shipping_origin_id, presence: true, numericality: { :greater_than => 1, message:'Select'}
-  validates :shipping_span_id, presence: true, numericality: { :greater_than => 1, message:'Select'}
-  validates :price, presence: true, :numericality => { :greater_than => 299, :less_than => 10000000}, format: { with: /\A[0-9]+\Z/, message: 'Half-width number'}
-  validates :image, presence: true
+  with_options presence: true do
+    validates :name, length: { maximum: 40}
+    validates :explanation, length: { maximum: 1000}
+    with_options numericality: { greater_than: 1, message:'Select'} do
+      validates :status_id
+      validates :category_id
+      validates :delivery_fee_id
+      validates :shipping_origin_id
+      validates :shipping_span_id
+    end
+    validates :price, :numericality => { greater_than: 299, less_than: 10000000}, format: { with: /\A[0-9]+\Z/, message: 'Half-width number'}
+    validates :image
+  end
 end
