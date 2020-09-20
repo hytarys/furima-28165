@@ -21,6 +21,15 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
+  def destroy
+    item = Item.find(params[:id])
+    if item.destroy
+      render("items/index")
+    else
+      render("items/show/params[:id]")
+    end
+  end
+
 
   private
   
