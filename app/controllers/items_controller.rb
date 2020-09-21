@@ -17,6 +17,21 @@ class ItemsController < ApplicationController
     end
   end
 
+  def edit
+    @item = Item.find(params[:id])
+  end
+
+  def update
+    # binding.pry
+    item = Item.find(params[:id])
+    # binding.pry
+    if item.update(item_params)
+      redirect_to action: :index
+    else
+      redirect_to action: :edit
+    end
+  end
+
   def show
     @item = Item.find(params[:id])
   end
