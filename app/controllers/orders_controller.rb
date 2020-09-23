@@ -4,12 +4,12 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new
+    @item = Item.find(params[:item_id])
+    @order = Order.new(item_id: params[:item_id], user_id: @item.user_id)
     if @order.valid?
-      @item = Item.find(params[:item_id])
       pay_item
       @order.save
-      return redirect_to root_path
+      return redirect_to items_path
     else
       redirect_to item_orders_path
     end
@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.permit(:token)
+    params.permit(:token, :item_id, :user_id,)
   end
 
   def pay_item
