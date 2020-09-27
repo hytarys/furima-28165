@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(item_id: params[:item_id], user_id: current_user.id)
+    @order = OrderAddress.new(order_address_params)
     if @order.valid?
       @item = Item.find(params[:item_id])
       pay_item
@@ -28,6 +28,10 @@ class OrdersController < ApplicationController
       card: order_params[:token],
       currency:'jpy'
     )
+  end
+
+  def order_address_params
+    params.permit(:postcode, :prefecture_id, :city, :house_number, :building_name, :phone_number, :user_id, :item_id).merge(user_id: current_user.id)
   end
 end
 
