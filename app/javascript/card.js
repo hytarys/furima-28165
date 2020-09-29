@@ -7,7 +7,7 @@ const pay = () => {
     const formResult = document.getElementById("charge-form");
     const formData = new FormData(formResult);
     const card = {
-      number: formData.get("order_address[number]"),
+      number: formData.get("order_address[number]"),//name属性を取得している
       cvc: formData.get("order_address[cvc]"),
       exp_month: formData.get("order_address[exp_month]"),
       exp_year: `20${formData.get("order_address[exp_year]")}`,

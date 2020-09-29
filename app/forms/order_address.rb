@@ -12,6 +12,6 @@ class OrderAddress
     validates :prefecture_id, numericality: {greater_than: 1, message: 'Select'}
     validates :city
     validates :house_number
-    validates :phone_number, format: {with: /\A\d{10}\z/, message: 'Input correctory'}
+    validates :phone_number, format: {with: /\A\d{11}\z/, message: 'Input correctory'}
   end
 end
