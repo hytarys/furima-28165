@@ -150,13 +150,11 @@
                 </div>
               </div>
               <%# 商品が売れていればsold outを表示しましょう %>
-              <% @order.each do |order| %>
-                <% if order.item_id == item.id %>
+                <% if item.order.present? %>
                   <div class='sold-out'>
                     <span>Sold Out!!</span>
                   </div>
                 <% end %>
-              <% end %>
               <%# //商品が売れていればsold outを表示しましょう %>
             </div>
           <% end %>

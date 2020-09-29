@@ -33,6 +33,7 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @order = Order.all
   end
 
   def destroy
