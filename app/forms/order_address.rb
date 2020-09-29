@@ -8,7 +8,7 @@ class OrderAddress
   end
   with_options presence: true do
     validates :token
-    validates :postcode, format: { with: /\A\d{3}[-]\d{4}\z/, message: 'Select'}
+    validates :postcode, format: { with: /\A\d{3}[-]\d{4}\z/, message: 'Input correctory'}
     validates :prefecture_id, numericality: {greater_than: 1, message: 'Select'}
     validates :city
     validates :house_number
