@@ -35,7 +35,7 @@ describe OrderAddress do
         expect(@orderaddress.errors.full_messages).to include("Postcode can't be blank")
       end
       it 'prefecture_idが1であると購入できない' do
-        @orderaddress.prefecture_id = ""
+        @orderaddress.prefecture_id = "1"
         @orderaddress.valid?
         expect(@orderaddress.errors.full_messages).to include("Prefecture Select")
       end
