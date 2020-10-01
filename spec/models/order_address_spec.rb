@@ -14,7 +14,7 @@ describe OrderAddress do
         expect(@orderaddress).to be_valid
       end
       it 'prefecture_idが1出なければ購入できる' do
-        @orderaddress.prefecture_id = '4'
+        @orderaddress.prefecture_id = 4
         expect(@orderaddress).to be_valid
       end
       it 'phone_numberにハイフンがなければ購入できる' do
