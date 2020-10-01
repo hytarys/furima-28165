@@ -35,7 +35,7 @@
     <% elsif user_signed_in? && current_user.id != @item.user_id && @item.order == nil%>
         <%= link_to '購入画面に進む', item_orders_path(@item.id) ,class:"item-red-btn"%>
     <% else %>
-        <%= link_to '購入画面に進む', new_user_session_path ,class:"item-red-btn"%>
+        <%= link_to 'この商品は売り切れました', new_user_session_path ,class:"item-red-btn"%>
     <% end %>
 
 
