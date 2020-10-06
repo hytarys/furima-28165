@@ -11,14 +11,14 @@ class Item < ApplicationRecord
   with_options presence: true do
     validates :name, length: { maximum: 40}
     validates :explanation, length: { maximum: 1000}
-    with_options numericality: { greater_than: 1, message:'Select'} do
+    with_options numericality: { greater_than: 1, message:'を選択してください'} do
       validates :status_id
       validates :category_id
       validates :delivery_fee_id
       validates :shipping_origin_id
       validates :shipping_span_id
     end
-    validates :price, :numericality => { greater_than: 299, less_than: 10000000}, format: { with: /\A[0-9]+\Z/, message: 'Half-width number'}
+    validates :price, :numericality => { greater_than: 299, less_than: 10000000}, format: { with: /\A[0-9]+\Z/, message: 'は半角数字で入力してください'}
     validates :image
   end
 end
