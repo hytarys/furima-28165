@@ -51,57 +51,57 @@ describe User do
       it "nameが空白だと登録できない" do
         @item.name = ""
         @item.valid?
-        expect(@item.errors.full_messages).to include("Name can't be blank")
+        expect(@item.errors.full_messages).to include("名前を入力してください")
       end
       it "explanationが空だと登録できない" do
         @item.explanation = ""
         @item.valid?
-        expect(@item.errors.full_messages).to include("Explanation can't be blank")
+        expect(@item.errors.full_messages).to include("商品説明を入力してください")
       end
       it "priceが空だと登録できない" do
         @item.price = ""
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price can't be blank")
+        expect(@item.errors.full_messages).to include("値段を入力してください")
       end
       it "imageが空だと登録できない" do
         @item.image = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Image can't be blank")
+        expect(@item.errors.full_messages).to include("商品画像を入力してください")
       end
       it "category_idが1であると登録できない" do
         @item.category_id = "1"
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category Select")
+        expect(@item.errors.full_messages).to include("カテゴリーを選択してください")
       end
       it "status_idがが1であると登録できない" do
         @item.status_id = "1"
         @item.valid?
-        expect(@item.errors.full_messages).to include("Status Select")
+        expect(@item.errors.full_messages).to include("商品の状態を選択してください")
       end
       it "delivery_fee_idが1であると登録できない" do
         @item.delivery_fee_id = "1"
         @item.valid?
-        expect(@item.errors.full_messages).to include("Delivery fee Select")
+        expect(@item.errors.full_messages).to include("配送料の負担先を選択してください")
       end
       it "shipping_origin_idが1であると登録できない" do
         @item.shipping_origin_id = "1"
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping origin Select")
+        expect(@item.errors.full_messages).to include("発送元の地域を選択してください")
       end
       it "shipping_span_idが1であると登録できない" do
         @item.shipping_span_id = "1"
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping span Select")
+        expect(@item.errors.full_messages).to include("配送までの日数を選択してください")
       end
       it "priceが300より小さいと登録できない" do
         @item.price = "50"
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price must be greater than 299")
+        expect(@item.errors.full_messages).to include("値段は299より大きい値にしてください")
       end
       it "priceが10000000以上だと登録できない" do
         @item.price = "1000000000000"
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price must be less than 10000000")
+        expect(@item.errors.full_messages).to include("値段は10000000より小さい値にしてください")
       end
     end
   end

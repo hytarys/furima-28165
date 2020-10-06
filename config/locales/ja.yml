@@ -13,7 +13,7 @@ ja:
         explanation: 商品説明
         status_id: 商品の状態
         category_id: カテゴリー
-        delivery_fee_id: 配送料
+        delivery_fee_id: 配送料の負担先
         shipping_origin_id: 発送元の地域
         shipping_span_id: 配送までの日数
         price: 値段
