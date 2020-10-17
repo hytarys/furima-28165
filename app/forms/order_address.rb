@@ -7,6 +7,7 @@ class OrderAddress
     Address.create(postcode: postcode, prefecture_id: prefecture_id, city: city, house_number: house_number, building_name: building_name, phone_number: phone_number, order_id: order.id)
   end
   with_options presence: true do
+    validates :token
     validates :postcode, format: { with: /\A\d{3}[-]\d{4}\z/, message: 'Input correctory'}
     validates :prefecture_id, numericality: {greater_than: 1, message: 'Select'}
     validates :city
